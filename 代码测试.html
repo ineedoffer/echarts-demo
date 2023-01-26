@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 具备宽高的容器 -->
+  <div id="main" style="width: 600px; height: 400px;"></div>
+  <div id="main2" style="width: 600px; height: 400px;"></div>
+  <script src="./lib/echarts.min.js"></script>
+  <script>
+    function initBarchart() {
+      // 初始化echarts实例
+      const myChart = echarts.init(document.getElementById('main'))
+
+      //准备配置项
+      const option = {
+        title: {//标题组件
+          text: 'ECharts 入门示例',//主标题文本
+          textStyle: {
+            color: 'red',
+            fontSize: 18
+          }
+        },
+        tooltip: {},//提示框组件
+        legend: {//图例
+          data: ['销量', '产量']
+        },
+        xAxis: { //X轴数据
+          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+        },
+        yAxis: {},
+        series: [//数据项
+          {
+            name: '销量',
+            type: 'bar',//图表类型 bar 柱状图 line折线图 pie饼图
+            data: [5, 20, 36, 10, 10, 20]
+          },
+          {
+            name: '产量',
+            type: 'bar',
+            data: [50, 200, 36, 40, 10, 20]
+          }
+        ]
+      };
+      //基于配置项渲染图表
+      myChart.setOption(option)
+    }
+
+
+    function initLinechart() {
+      // 初始化echarts实例
+      const myChart = echarts.init(document.getElementById('main2'))
+
+      //准备配置项
+      const option = {
+        title: {
+          text: 'Stacked Line',
+          textStyle: {
+            color: 'red',
+            fontSize: 20,
+          }
+        },
+        tooltip: {
+          //触发显示方式
+          trigger: 'axis'
+        },
+        legend: {
+          data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+        },
+        toolbox: {
+          feature: {
+            saveAsImage: {}
+          }
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [
+          {
+            name: 'Email',
+            type: 'line',
+            stack: 'Total',
+            data: [120, 132, 101, 134, 90, 230, 210]
+          },
+          {
+            name: 'Union Ads',
+            type: 'line',
+            stack: 'Total',
+            data: [220, 182, 191, 234, 290, 330, 310]
+          },
+          {
+            name: 'Video Ads',
+            type: 'line',
+            stack: 'Total',
+            data: [150, 232, 201, 154, 190, 330, 410]
+          },
+          {
+            name: 'Direct',
+            type: 'line',
+            stack: 'Total',
+            data: [320, 332, 301, 334, 390, 330, 320]
+          },
+          {
+            name: 'Search Engine',
+            type: 'line',
+            stack: 'Total',
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+          }
+        ]
+      };
+      //基于配置项渲染图表
+      myChart.setOption(option)
+    }
+    initLinechart()
+    initBarchart()
+
+
+
+
+    console.log(1);
+
+
+  </script>
+</body>
+
+</html>
